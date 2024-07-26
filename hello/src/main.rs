@@ -1,3 +1,6 @@
+use event::WebEvent;
+
+mod event;
 mod student;
 
 fn main() {
@@ -56,6 +59,38 @@ fn main() {
         "{}, level {} is remote {}. His grades are: {}, {}, {}, {}. His gpa is: {}",
         jon.name, jon.level, jon.remote, grade_b.0, grade_b.1, grade_b.2, grade_b.3, grade_b.4
     );
+
+    let web_load = WebEvent::Load(true);
+
+    let click = event::MouseClick { x: 100, y: 250 };
+    let keys = event::KeyPress(String::from("ctrl+"), 'N');
+    let web_event = event::WebEvent::Click(click);
+    let we_click = web_event;
+    let we_key = event::WebEvent::Keys(keys);
+
+    println!(
+        "web event enum strcture: \n\n {:#?} \n\n {:#?} \n\n {:#?}",
+        web_load, we_click, we_key
+    );
+
+    let formal = "Formal goodbye";
+    goodbye(formal);
+    goodbye("Casual goodye. See you later!");
+
+    let num = 25;
+    println!("{} divided by 5 is {}", 0, calc_num(0));
+    println!("{} divided by 5 is {}", num, calc_num(num));
 }
 
 struct Grades(char, char, char, char, f32);
+
+fn goodbye(message: &str) {
+    println!("{}", message);
+}
+
+fn calc_num(num: u32) -> u32 {
+    if num == 0 {
+        return 0;
+    }
+    num / 5
+}
