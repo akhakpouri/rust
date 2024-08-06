@@ -79,7 +79,9 @@ fn main() {
 
     let num = 25;
     println!("{} divided by 5 is {}", 0, calc_num(0));
-    println!("{} divided by 5 is {}", num, calc_num(num));
+    println!("{} divided by 5 is {}", num, calc_num(num));\
+
+    println!("{} world", define_x("hello"))
 }
 
 struct Grades(char, char, char, char, f32);
@@ -93,4 +95,9 @@ fn calc_num(num: u32) -> u32 {
         return 0;
     }
     num / 5
+}
+
+#[allow(unused_variables)]
+fn define_x(x: &str) -> &str {
+    return "hello";
 }
